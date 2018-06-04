@@ -1,0 +1,1 @@
+The code is refactored to remove code smells
