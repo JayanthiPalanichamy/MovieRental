@@ -22,17 +22,17 @@ public class Customer {
 
     public String statement() {
         String result = "Rental record for " + getName() + "\n";
-        result = getAmountSummary(result);
+        result += getIndividualAmountSummary();
         result += "Amount owed is " + String.valueOf(getTotalAmount()) + "\n";
         result += "You earned " + String.valueOf(getFrequentRenterPoints()) + " frequent renter points";
 
         return result;
     }
 
-    private String getAmountSummary(String result) {
+    private String getIndividualAmountSummary() {
+        String result="";
         for (Rental rental : rentals) {
-            double amount = rental.getAmount();
-            result += "\t" + rental.getMovie().getTitle() + "\t" + String.valueOf(amount) + "\n";
+            result += "\t" + rental.getMovie().getTitle() + "\t" + String.valueOf(rental.getAmount()) + "\n";
         }
         return result;
     }
@@ -42,13 +42,7 @@ public class Customer {
     }
 
     private int getFrequentRenterPoints() {
-        int frequentRenterPoints=0;
-        for (Rental rental : rentals) {
-            frequentRenterPoints++;
-            if (isNewReleaseRentedMoreThan1Days(rental))
-                frequentRenterPoints++;
-        }
-        return frequentRenterPoints;
+        return rentals.stream().mapToInt(rental -> {if(isNewReleaseRentedMoreThan1Days(rental)) return 2;else return 1;}).sum();
     }
 
     private boolean isNewReleaseRentedMoreThan1Days(Rental rental) {
