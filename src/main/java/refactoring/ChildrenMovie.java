@@ -12,10 +12,7 @@ public class ChildrenMovie implements Movie {
     }
 
     public double calculateRentalAmount(int rentalDays) {
-        double amount =0;
-        amount += 1.5;
-        if (rentalDays > 3)
-            amount += (rentalDays - 3) * 1.5;
-        return amount;
+        if(rentalDays <=3 ) return 1.5;
+        else return (rentalDays - 3) * 1.5 + 1.5;
     }
 }
