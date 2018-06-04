@@ -7,7 +7,7 @@ import static org.junit.Assert.assertEquals;
 public class MovieRentalTest {
     @Test
     public void returnAmount3ForNewReleasedMovieRentedForOneDay(){
-        Movie deadPool = new Movie("Dead Pool",1);
+        Movie deadPool = new NewReleaseMovie("Dead Pool");
         Rental rental = new Rental(deadPool,1);
         Customer customer = new Customer("Jayanthi");
         customer.addRental(rental);
@@ -20,8 +20,8 @@ public class MovieRentalTest {
 
     @Test
     public void returnAmount3ForRentingTwoRegularMoviesForOneDay() {
-        Movie commando = new Movie("Commando",0);
-        Movie mummy = new Movie("Mummy",0);
+        Movie commando = new RegularMovie("Commando");
+        Movie mummy = new RegularMovie("Mummy");
         Rental commandoRental = new Rental(commando,1);
         Rental mummyRental = new Rental(mummy,1);
         Customer customer = new Customer("Jayanthi");
@@ -37,7 +37,7 @@ public class MovieRentalTest {
 
     @Test
     public void returnFrequency2ForRentingNewReleaseMovieMoreThanOneDay() {
-        Movie deadPool = new Movie("Dead Pool",1);
+        Movie deadPool = new NewReleaseMovie("Dead Pool");
         Rental rental = new Rental(deadPool,3);
         Customer customer = new Customer("Jayanthi");
         customer.addRental(rental);
@@ -50,9 +50,9 @@ public class MovieRentalTest {
 
     @Test
     public void returnAmountForRentingOneChildrenMovieAndOneRegularMovie() {
-        Movie coco = new Movie("COCO",2);
+        Movie coco = new ChildrenMovie("COCO");
         Rental cocoRental = new Rental(coco,1);
-        Movie mummy = new Movie("Mummy",0);
+        Movie mummy = new RegularMovie("Mummy");
         Rental mummyRental = new Rental(mummy,1);
         Customer customer = new Customer("Jayanthi");
         customer.addRental(cocoRental);

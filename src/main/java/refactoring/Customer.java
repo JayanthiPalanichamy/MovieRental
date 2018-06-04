@@ -2,6 +2,7 @@ package refactoring;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class Customer {
 
@@ -56,30 +57,19 @@ public class Customer {
         int frequentRenterPoints=0;
         for (Rental rental : rentals) {
             frequentRenterPoints++;
-            if (rental.getMovie().getPriceCode() == Movie.NEW_RELEASE && rental.getDaysRented() > 1)
+            if (isNewReleaseRentedMoreThan1Days(rental))
                 frequentRenterPoints++;
         }
 
         return frequentRenterPoints;
     }
 
-    private double getAmount(Rental rental) {
-        double amount = 0;
-        switch (rental.getMovie().getPriceCode()) {
-            case Movie.REGULAR:
-                amount += 2;
-                if (rental.getDaysRented() > 2)
-                    amount += (rental.getDaysRented() - 2) * 1.5;
-                break;
-            case Movie.NEW_RELEASE:
-                amount += rental.getDaysRented() * 3;
-                break;
-            case Movie.CHILDREN:
-                amount += 1.5;
-                if (rental.getDaysRented() > 3)
-                    amount += (rental.getDaysRented() - 3) * 1.5;
-                break;
-        }
-        return amount;
+    private boolean isNewReleaseRentedMoreThan1Days(Rental rental) {
+        return rental.getMovie().getClass()==NewReleaseMovie.class && rental.getDaysRented() > 1;
     }
+
+    private double getAmount(Rental rental) {
+        return rental.getMovie().calculateRentalAmount(rental.getDaysRented());
+    }
+
 }
