@@ -44,12 +44,7 @@ public class Customer {
     }
 
     private double getTotalAmount() {
-        double totalAmount = 0;
-        for (Rental rental : rentals) {
-            double amount = rental.getAmount();
-            totalAmount += amount;
-        }
-        return totalAmount;
+        return rentals.stream().mapToDouble(rental ->rental.getAmount()).sum();
     }
 
     private int getFrequentRenterPoints() {
@@ -59,7 +54,6 @@ public class Customer {
             if (isNewReleaseRentedMoreThan1Days(rental))
                 frequentRenterPoints++;
         }
-
         return frequentRenterPoints;
     }
 
