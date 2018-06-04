@@ -2,7 +2,6 @@ package refactoring;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 public class Customer {
 
@@ -38,7 +37,7 @@ public class Customer {
 
     private String getAmountSummary(String result) {
         for (Rental rental : rentals) {
-            double amount = getAmount(rental);
+            double amount = rental.getAmount();
             result += "\t" + rental.getMovie().getTitle() + "\t" + String.valueOf(amount) + "\n";
         }
         return result;
@@ -47,7 +46,7 @@ public class Customer {
     private double getTotalAmount() {
         double totalAmount = 0;
         for (Rental rental : rentals) {
-            double amount = getAmount(rental);
+            double amount = rental.getAmount();
             totalAmount += amount;
         }
         return totalAmount;
@@ -65,11 +64,8 @@ public class Customer {
     }
 
     private boolean isNewReleaseRentedMoreThan1Days(Rental rental) {
-        return rental.getMovie().getClass()==NewReleaseMovie.class && rental.getDaysRented() > 1;
+        return rental.isRentedMovie(NewReleaseMovie.class) && rental.isDaysRentedMoreThan(1) ;
     }
 
-    private double getAmount(Rental rental) {
-        return rental.getMovie().calculateRentalAmount(rental.getDaysRented());
-    }
 
 }

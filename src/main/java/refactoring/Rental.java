@@ -18,4 +18,15 @@ public class Rental {
         return daysRented;
     }
 
+    public double getAmount() {
+        return movie.calculateRentalAmount(daysRented);
+    }
+
+    public boolean isDaysRentedMoreThan(int days) {
+        return daysRented >days;
+    }
+
+    public boolean isRentedMovie(Class<NewReleaseMovie> newReleaseMovieClass) {
+        return movie.getClass()==newReleaseMovieClass;
+    }
 }
