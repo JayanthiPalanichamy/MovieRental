@@ -1,7 +1,5 @@
 package refactoring;
 
-import java.util.Objects;
-
 public class NewReleaseMovie implements Movie {
     private final String title;
 
