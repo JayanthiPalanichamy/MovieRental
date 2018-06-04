@@ -12,16 +12,12 @@ public class Customer {
         this.name = name;
     }
 
-    public String getName() {
-        return name;
-    }
-
     public void addRental(Rental rental) {
         rentals.add(rental);
     }
 
     public String statement() {
-        String result = "Rental record for " + getName() + "\n";
+        String result = "Rental record for " + name + "\n";
         result += getIndividualAmountSummary();
         result += "Amount owed is " + String.valueOf(getTotalAmount()) + "\n";
         result += "You earned " + String.valueOf(getFrequentRenterPoints()) + " frequent renter points";
@@ -32,7 +28,7 @@ public class Customer {
     private String getIndividualAmountSummary() {
         String result="";
         for (Rental rental : rentals) {
-            result += "\t" + rental.getMovie().getTitle() + "\t" + String.valueOf(rental.getAmount()) + "\n";
+            result += "\t" + rental.getMovieTitle() + "\t" + String.valueOf(rental.getAmount()) + "\n";
         }
         return result;
     }
