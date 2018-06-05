@@ -26,7 +26,7 @@ public class Customer {
     }
 
     private String getIndividualAmountSummary() {
-        String result="";
+        String result = "";
         for (Rental rental : rentals) {
             result += "\t" + rental.getMovieTitle() + "\t" + String.valueOf(rental.getAmount()) + "\n";
         }
