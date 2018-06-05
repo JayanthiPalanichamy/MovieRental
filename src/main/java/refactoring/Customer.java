@@ -34,16 +34,10 @@ public class Customer {
     }
 
     private double getTotalAmount() {
-        return rentals.stream().mapToDouble(rental ->rental.getAmount()).sum();
+        return rentals.stream().mapToDouble(rental -> rental.getAmount()).sum();
     }
 
     private int getFrequentRenterPoints() {
-        return rentals.stream().mapToInt(rental -> {if(isNewReleaseRentedMoreThan1Days(rental)) return 2;else return 1;}).sum();
+        return rentals.stream().mapToInt(rental -> rental.getRenterPointer()).sum();
     }
-
-    private boolean isNewReleaseRentedMoreThan1Days(Rental rental) {
-        return rental.isRentedMovie(NewReleaseMovie.class) && rental.isDaysRentedMoreThan(1) ;
-    }
-
-
 }

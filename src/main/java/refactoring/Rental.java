@@ -19,10 +19,19 @@ public class Rental {
     }
 
     public boolean isDaysRentedMoreThan(int days) {
-        return daysRented >days;
+        return daysRented > days;
     }
 
     public boolean isRentedMovie(Class<NewReleaseMovie> newReleaseMovieClass) {
-        return movie.getClass()==newReleaseMovieClass;
+        return movie.getClass() == newReleaseMovieClass;
+    }
+
+    public int getRenterPointer() {
+        if (isNewReleaseRentedMoreThan1Days()) return 2;
+        else return 1;
+    }
+
+    private boolean isNewReleaseRentedMoreThan1Days() {
+        return isRentedMovie(NewReleaseMovie.class) && isDaysRentedMoreThan(1);
     }
 }
