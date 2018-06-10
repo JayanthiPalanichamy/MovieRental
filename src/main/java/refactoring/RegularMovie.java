@@ -1,10 +1,8 @@
 package refactoring;
 
-public class RegularMovie implements Movie {
-    private final String title;
-
+public class RegularMovie extends Movie {
     public RegularMovie(String title) {
-        this.title = title;
+        super(title);
     }
 
     public String getTitle() {

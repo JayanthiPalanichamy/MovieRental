@@ -1,10 +1,9 @@
 package refactoring;
 
-public class NewReleaseMovie implements Movie {
-    private final String title;
+public class NewReleaseMovie extends Movie {
 
     public NewReleaseMovie(String title) {
-        this.title = title;
+        super(title);
     }
 
     @Override

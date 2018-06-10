@@ -1,10 +1,8 @@
 package refactoring;
 
-public class ChildrenMovie implements Movie {
-    private final String title;
-
+public class ChildrenMovie extends Movie {
     public ChildrenMovie(String title) {
-        this.title = title;
+        super(title);
     }
 
     public String getTitle() {

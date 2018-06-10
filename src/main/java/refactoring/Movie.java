@@ -1,7 +1,13 @@
 package refactoring;
 
-public interface Movie {
-    String getTitle();
+public abstract class Movie {
+    protected final String title;
 
-    double calculateRentalAmount(int rentalDays);
+    protected Movie(String title) {
+        this.title = title;
+    }
+
+    abstract String getTitle();
+
+    abstract double calculateRentalAmount(int rentalDays);
 }
