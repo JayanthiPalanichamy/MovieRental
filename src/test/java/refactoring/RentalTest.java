@@ -33,4 +33,17 @@ public class RentalTest {
     public void returnsTrueWhenMovieInTheRentalIsMatchedWithItsCategory() {
         assertTrue(rental.isRentedMovie(NewReleaseMovie.class));
     }
+
+    @Test
+    public void returnFrequentRentersPointsWhenNewReleasedMovieIsRentedForMoreThanADay() {
+        assertEquals(2,rental.getRenterPointer());
+    }
+
+    @Test
+    public void returnFrequentPointForOtherMovies() {
+        Movie mummy = new RegularMovie("Mummy");
+        Rental rental1 = new Rental(mummy,4);
+
+        assertEquals(1,rental1.getRenterPointer());
+    }
 }
