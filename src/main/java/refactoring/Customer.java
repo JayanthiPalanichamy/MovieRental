@@ -17,6 +17,7 @@ public class Customer {
     }
 
     public String statement() {
+        if(rentals.isEmpty()) throw new NoRentalsException("The customer has no rentals");
         StringBuilder result=new StringBuilder();
         result.append("Rental record for " + name + "\n");
         result.append(getIndividualAmountSummary());

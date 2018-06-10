@@ -77,4 +77,11 @@ public class CustomerTest {
 
         assertEquals(expectedResult, customer.statement());
     }
+
+    @Test(expected = NoRentalsException.class)
+    public void throwsExceptionWhenStatementWasCalledForCustomerWithNoRental(){
+        Customer karthikey = new Customer("Karthikey");
+
+        karthikey.statement();
+    }
 }
