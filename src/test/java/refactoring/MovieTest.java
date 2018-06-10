@@ -11,11 +11,12 @@ public class MovieTest {
         Rental rental = new Rental(deadPool,1);
         Customer customer = new Customer("Jayanthi");
         customer.addRental(rental);
-
-        assertEquals("Rental record for Jayanthi\n" +
+        String expectedResult = "Rental record for Jayanthi\n" +
                 "\tDead Pool\t3.0\n" +
                 "Amount owed is 3.0\n" +
-                "You earned 1 frequent renter points",customer.statement());
+                "You earned 1 frequent renter points";
+
+        assertEquals(expectedResult,customer.statement());
     }
 
     @Test
@@ -27,12 +28,13 @@ public class MovieTest {
         Customer customer = new Customer("Jayanthi");
         customer.addRental(commandoRental);
         customer.addRental(mummyRental);
-
-        assertEquals("Rental record for Jayanthi\n" +
+        String expectedResult = "Rental record for Jayanthi\n" +
                 "\tCommando\t2.0\n" +
                 "\tMummy\t2.0\n" +
                 "Amount owed is 4.0\n" +
-                "You earned 2 frequent renter points",customer.statement());
+                "You earned 2 frequent renter points";
+
+        assertEquals(expectedResult,customer.statement());
     }
 
     @Test
@@ -41,11 +43,12 @@ public class MovieTest {
         Rental rental = new Rental(deadPool,3);
         Customer customer = new Customer("Jayanthi");
         customer.addRental(rental);
-
-        assertEquals("Rental record for Jayanthi\n" +
+        String expectedResult = "Rental record for Jayanthi\n" +
                 "\tDead Pool\t9.0\n" +
                 "Amount owed is 9.0\n" +
-                "You earned 2 frequent renter points",customer.statement());
+                "You earned 2 frequent renter points";
+
+        assertEquals(expectedResult,customer.statement());
     }
 
     @Test
@@ -57,11 +60,12 @@ public class MovieTest {
         Customer customer = new Customer("Jayanthi");
         customer.addRental(cocoRental);
         customer.addRental(mummyRental);
-
-        assertEquals("Rental record for Jayanthi\n" +
+        String expectedResult = "Rental record for Jayanthi\n" +
                 "\tCOCO\t1.5\n" +
                 "\tMummy\t2.0\n" +
                 "Amount owed is 3.5\n" +
-                "You earned 2 frequent renter points",customer.statement());
+                "You earned 2 frequent renter points";
+
+        assertEquals(expectedResult,customer.statement());
     }
 }
