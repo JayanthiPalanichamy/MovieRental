@@ -1,6 +1,7 @@
 package refactoring;
 
 public class NewReleaseMovie extends Movie {
+    public static final int COST_PER_DAY = 3;
 
     public NewReleaseMovie(String title) {
         super(title);
@@ -13,7 +14,7 @@ public class NewReleaseMovie extends Movie {
 
     @Override
     public double calculateRentalAmount(int rentalDays) {
-        return rentalDays * 3;
+        return rentalDays * COST_PER_DAY;
     }
 
 }

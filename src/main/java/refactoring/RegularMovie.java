@@ -1,6 +1,11 @@
 package refactoring;
 
 public class RegularMovie extends Movie {
+
+    public static final int NORMAL_COST = 2;
+    public static final double EXTRA_FARE = 1.5;
+    public static final int MAX_DAYS_TILL_NORMAL_COST = 2;
+
     public RegularMovie(String title) {
         super(title);
     }
@@ -11,7 +16,7 @@ public class RegularMovie extends Movie {
 
     @Override
     public double calculateRentalAmount(int rentalDays) {
-        if (rentalDays <= 2) return 2;
-        else return (rentalDays - 2) * 1.5 + 2;
+        if (rentalDays <= MAX_DAYS_TILL_NORMAL_COST) return NORMAL_COST;
+        else return (rentalDays - 2) * EXTRA_FARE + NORMAL_COST;
     }
 }

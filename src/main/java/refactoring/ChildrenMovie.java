@@ -1,6 +1,10 @@
 package refactoring;
 
 public class ChildrenMovie extends Movie {
+    public static final double NORMAL_COST = 1.5;
+    public static final double EXTRA_FARE = 1.5;
+    public static final int MAX_DAYS_TILL_NORMAL_COST = 3;
+
     public ChildrenMovie(String title) {
         super(title);
     }
@@ -10,8 +14,8 @@ public class ChildrenMovie extends Movie {
     }
 
     public double calculateRentalAmount(int rentalDays) {
-        if (rentalDays <= 3) return 1.5;
-        else return (rentalDays - 3) * 1.5 + 1.5;
+        if (rentalDays <= MAX_DAYS_TILL_NORMAL_COST) return NORMAL_COST;
+        else return (rentalDays - MAX_DAYS_TILL_NORMAL_COST) * EXTRA_FARE + NORMAL_COST;
     }
 
 }
