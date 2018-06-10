@@ -25,16 +25,6 @@ public class RentalTest {
     }
 
     @Test
-    public void returnsTrueWhenMovieIsRentedMoreThanGivenDays() {
-        assertTrue(rental.isDaysRentedMoreThan(2));
-    }
-
-    @Test
-    public void returnsTrueWhenMovieInTheRentalIsMatchedWithItsCategory() {
-        assertTrue(rental.isRentedMovie(NewReleaseMovie.class));
-    }
-
-    @Test
     public void returnFrequentRentersPointsWhenNewReleasedMovieIsRentedForMoreThanADay() {
         assertEquals(2,rental.getRenterPointer());
     }
