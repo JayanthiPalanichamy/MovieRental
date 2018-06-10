@@ -35,7 +35,7 @@ public class Customer {
     }
 
     private double getTotalAmount() {
-        return rentals.stream().mapToDouble(rental -> rental.getAmount()).sum();
+        return rentals.stream().mapToDouble(Rental::getAmount).sum();
     }
 
     private int getFrequentRenterPoints() {
