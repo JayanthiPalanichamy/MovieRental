@@ -1,31 +1,43 @@
 package refactoring;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
 public class CustomerTest {
+    private Customer customer;
+    private Movie deadPool;
+    private Movie commando;
+    private Movie mummy;
+    private Movie coco;
+
+    @Before
+    public void setUp(){
+        customer = new Customer("Jayanthi");
+        deadPool = new NewReleaseMovie("Dead Pool");
+        commando = new RegularMovie("Commando");
+        mummy = new RegularMovie("Mummy");
+        coco = new ChildrenMovie("COCO");
+    }
     @Test
-    public void returnCustomerStatementWhenNewReleasedMovieRentedForOneDay(){
-        Movie deadPool = new NewReleaseMovie("Dead Pool");
-        Rental rental = new Rental(deadPool,1);
-        Customer customer = new Customer("Jayanthi");
+    public void returnCustomerStatementWhenNewReleasedMovieRentedForOneDay() {
+        Rental rental = new Rental(deadPool, 1);
+
         customer.addRental(rental);
         String expectedResult = "Rental record for Jayanthi\n" +
                 "\tDead Pool\t3.0\n" +
                 "Amount owed is 3.0\n" +
                 "You earned 1 frequent renter points";
 
-        assertEquals(expectedResult,customer.statement());
+        assertEquals(expectedResult, customer.statement());
     }
 
     @Test
     public void returnCustomerStatementWhenRentingTwoRegularMoviesForOneDay() {
-        Movie commando = new RegularMovie("Commando");
-        Movie mummy = new RegularMovie("Mummy");
-        Rental commandoRental = new Rental(commando,1);
-        Rental mummyRental = new Rental(mummy,1);
-        Customer customer = new Customer("Jayanthi");
+        Rental commandoRental = new Rental(commando, 1);
+        Rental mummyRental = new Rental(mummy, 1);
+
         customer.addRental(commandoRental);
         customer.addRental(mummyRental);
         String expectedResult = "Rental record for Jayanthi\n" +
@@ -34,30 +46,27 @@ public class CustomerTest {
                 "Amount owed is 4.0\n" +
                 "You earned 2 frequent renter points";
 
-        assertEquals(expectedResult,customer.statement());
+        assertEquals(expectedResult, customer.statement());
     }
 
     @Test
     public void returnCustomerStatementWhenNewReleasedMovieIsRentedMoreThanADay() {
-        Movie deadPool = new NewReleaseMovie("Dead Pool");
-        Rental rental = new Rental(deadPool,3);
-        Customer customer = new Customer("Jayanthi");
+        Rental rental = new Rental(deadPool, 3);
         customer.addRental(rental);
+
         String expectedResult = "Rental record for Jayanthi\n" +
                 "\tDead Pool\t9.0\n" +
                 "Amount owed is 9.0\n" +
                 "You earned 2 frequent renter points";
 
-        assertEquals(expectedResult,customer.statement());
+        assertEquals(expectedResult, customer.statement());
     }
 
     @Test
     public void returnCustomerStatementWhenOneChildrenMovieAndOneRegularMovieIsRented() {
-        Movie coco = new ChildrenMovie("COCO");
-        Rental cocoRental = new Rental(coco,1);
-        Movie mummy = new RegularMovie("Mummy");
-        Rental mummyRental = new Rental(mummy,1);
-        Customer customer = new Customer("Jayanthi");
+        Rental cocoRental = new Rental(coco, 1);
+        Rental mummyRental = new Rental(mummy, 1);
+
         customer.addRental(cocoRental);
         customer.addRental(mummyRental);
         String expectedResult = "Rental record for Jayanthi\n" +
@@ -66,6 +75,6 @@ public class CustomerTest {
                 "Amount owed is 3.5\n" +
                 "You earned 2 frequent renter points";
 
-        assertEquals(expectedResult,customer.statement());
+        assertEquals(expectedResult, customer.statement());
     }
 }
