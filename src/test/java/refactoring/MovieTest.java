@@ -4,9 +4,9 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
-public class MovieRentalTest {
+public class MovieTest {
     @Test
-    public void returnAmount3ForNewReleasedMovieRentedForOneDay(){
+    public void returnCustomerStatementWhenNewReleasedMovieRentedForOneDay(){
         Movie deadPool = new NewReleaseMovie("Dead Pool");
         Rental rental = new Rental(deadPool,1);
         Customer customer = new Customer("Jayanthi");
@@ -19,7 +19,7 @@ public class MovieRentalTest {
     }
 
     @Test
-    public void returnAmount3ForRentingTwoRegularMoviesForOneDay() {
+    public void returnCustomerStatementWhenRentingTwoRegularMoviesForOneDay() {
         Movie commando = new RegularMovie("Commando");
         Movie mummy = new RegularMovie("Mummy");
         Rental commandoRental = new Rental(commando,1);
@@ -36,7 +36,7 @@ public class MovieRentalTest {
     }
 
     @Test
-    public void returnFrequency2ForRentingNewReleaseMovieMoreThanOneDay() {
+    public void returnCustomerStatementWhenNewReleasedMovieIsRentedMoreThanADay() {
         Movie deadPool = new NewReleaseMovie("Dead Pool");
         Rental rental = new Rental(deadPool,3);
         Customer customer = new Customer("Jayanthi");
@@ -49,7 +49,7 @@ public class MovieRentalTest {
     }
 
     @Test
-    public void returnAmountForRentingOneChildrenMovieAndOneRegularMovie() {
+    public void returnCustomerStatementWhenOneChildrenMovieAndOneRegularMovieIsRented() {
         Movie coco = new ChildrenMovie("COCO");
         Rental cocoRental = new Rental(coco,1);
         Movie mummy = new RegularMovie("Mummy");
