@@ -3,12 +3,12 @@ package refactoring;
 import org.junit.Before;
 import org.junit.Test;
 
-import static junit.framework.TestCase.assertTrue;
 import static org.junit.Assert.assertEquals;
 
 public class RentalTest {
     private Movie deadPool;
-    Rental rental;
+    private Rental rental;
+
     @Before
     public void setUp(){
         deadPool = new NewReleaseMovie("Dead Pool");
