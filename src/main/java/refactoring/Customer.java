@@ -39,6 +39,6 @@ public class Customer {
     }
 
     private int getFrequentRenterPoints() {
-        return rentals.stream().mapToInt(rental -> rental.getRenterPointer()).sum();
+        return rentals.stream().mapToInt(Rental::getRenterPointer).sum();
     }
 }
