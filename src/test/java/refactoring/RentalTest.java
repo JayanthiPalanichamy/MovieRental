@@ -1,24 +1,31 @@
 package refactoring;
 
+import org.junit.Before;
 import org.junit.Test;
 
+import static junit.framework.TestCase.assertTrue;
 import static org.junit.Assert.assertEquals;
 
 public class RentalTest {
     private Movie deadPool;
+    Rental rental;
+    @Before
+    public void setUp(){
+        deadPool = new NewReleaseMovie("Dead Pool");
+        rental = new Rental(deadPool, 3);
+    }
     @Test
     public void returnTitleOfMovieWhichIsRented(){
-        deadPool = new NewReleaseMovie("Dead Pool");
-        Rental rental = new Rental(deadPool, 1);
-
         assertEquals("Dead Pool",rental.getMovieTitle());
     }
 
     @Test
     public void returnRentalAmountForTheMovieRented() {
-        deadPool = new NewReleaseMovie("Dead Pool");
-        Rental rental = new Rental(deadPool, 1);
+        assertEquals(9,rental.getAmount(),0.0001);
+    }
 
-        assertEquals(3,rental.getAmount(),0.0001);
+    @Test
+    public void returnsTrueWhenMovieIsRentedMoreThanGivenDays() {
+        assertTrue(rental.isDaysRentedMoreThan(2));
     }
 }
