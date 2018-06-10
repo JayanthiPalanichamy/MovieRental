@@ -28,4 +28,9 @@ public class RentalTest {
     public void returnsTrueWhenMovieIsRentedMoreThanGivenDays() {
         assertTrue(rental.isDaysRentedMoreThan(2));
     }
+
+    @Test
+    public void returnsTrueWhenMovieInTheRentalIsMatchedWithItsCategory() {
+        assertTrue(rental.isRentedMovie(NewReleaseMovie.class));
+    }
 }
